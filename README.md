@@ -1,19 +1,24 @@
-# LinkShield
 
-## Overview:
-LinkShield is a versatile tool designed to protect and mask URLs, especially useful for creating secure links for social engineering purposes.
 
-## Features:
+LinkShield - URL Protection Tool
+================================
 
-URL Validation:
+LinkShield is a command-line tool for protecting phishing URLs by masking them with a specified domain and optional social engineering words. It generates a LinkShield URL that redirects to the original phishing URL, making it harder to recognize and more appealing to potential victims.
 
--`Ensure that URLs provided for phishing and masking start with either http:// or https://. Invalid URLs will trigger an error message.
-LinkShield URL Generation`:
+Usage
+-----
 
--`Generate a LinkShield URL by combining the phishing URL, a masking domain, and optional social engineering words.
-Masking Domain Input`:
+bashCopy code
 
--`Enter the domain to mask the phishing URL. The tool ensures that the masking domain starts with http:// or https://.
-Social Engineering Words`:
+`python3 LinkShield.py "phishing_url" "mask" -w "social-engineering-words"`
 
--`Add social engineering words to enhance the URL's disguise. Use hyphens (-) between words, e.g., free-money, best-pubg-tricks`.
+### Arguments:
+
+-   `"phishing_url"` (required): The phishing URL to be protected. It should start with either `http://` or `https://`.
+
+-   `"mask"` (required): The domain to mask the phishing URL. It should also start with either `http://` or `https://`.
+
+-   `-w, --words` (optional): Social engineering words separated by '-' (e.g., `free-money`, `best-pubg-tricks`). Avoid using spaces.
+
+If any of the required arguments are not provided, the tool will prompt you for input.
+
