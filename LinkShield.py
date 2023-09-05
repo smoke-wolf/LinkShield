@@ -1,3 +1,4 @@
+import argparse
 import requests
 
 # Function to check if the URL starts with http:// or https://
@@ -24,19 +25,31 @@ def create_linkshield_url(phishing_url, mask, words):
     return final
 
 def main():
-    print("\n\u001b[31m  LinkShield - URL Protection Tool  \033[0m")
-    print("\nBy smoke-wolf (GitHub: https://github.com/smoke-wolf)\n")
+    parser = argparse.ArgumentParser(description="LinkShield - URL Protection Tool")
+    parser.add_argument("phishing_url", nargs="?", help="Phishing URL (with http or https)")
+    parser.add_argument("mask", nargs="?", help="Domain to mask the Phishing URL (with http or https)")
+    parser.add_argument("-w", "--words", nargs="?", help="Social engineering words separated by '-' (e.g., free-money, best-pubg-tricks)")
 
-    phish = input("Enter the Phishing URL (with http or https): ")
-    url_checker(phish)
+    args = parser.parse_args()
 
-    mask = input(
-        '\nEnter the Domain to mask the Phishing URL (with http or https, e.g., https://google.com, http://anything.org): ')
-    url_checker(mask)
+    if args.phishing_url is None:
+        phish = input("Enter the Phishing URL (with http or https): ")
+        url_checker(phish)
+    else:
+        phish = args.phishing_url
 
-    print('\nEnter social engineering words (e.g., free-money, best-pubg-tricks)')
-    print("\033[31mDon't use spaces, use '-' between words.\033[0m")
-    words = input("=> ")
+    if args.mask is None:
+        mask = input('\nEnter the Domain to mask the Phishing URL (with http or https, e.g., https://google.com, http://anything.org): ')
+        url_checker(mask)
+    else:
+        mask = args.mask
+
+    if args.words is None:
+        print('\nEnter social engineering words (e.g., free-money, best-pubg-tricks)')
+        print("\033[31mDon't use spaces, use '-' between words.\033[0m")
+        words = input("=> ")
+    else:
+        words = args.words
 
     print("\nGenerating LinkShield URL...\n")
     final_url = create_linkshield_url(phish, mask, words)
