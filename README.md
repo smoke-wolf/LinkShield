@@ -22,3 +22,14 @@ bashCopy code
 
 If any of the required arguments are not provided, the tool will prompt you for input.
 
+
+# 
+## New Build (gui)
+
+    Usage: 1. Enter the phishing URL
+    in the 'Phishing URL' field. 
+    2. Enter the domain to mask the phishing URL in the 'Domain to mask the Phishing URL' field. 
+    3. Optionally, enter social engineering words separated by '-' in the 'Social engineering words separated by '-' field. 
+    4. Click the 'Generate LinkShield URL' button to create the  
+
+The link will be printed in the terminal.
